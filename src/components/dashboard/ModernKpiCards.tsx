@@ -51,9 +51,11 @@ export default function ModernKpiCards() {
   return (
     <div style={{ 
       display: 'grid', 
-      gap: '16px', 
-      gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))'
-    }}>
+      gap: '12px', 
+      gridTemplateColumns: 'repeat(1, 1fr)',
+    }}
+    className="sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:gap-6"
+    >
       {kpiItems.map((item, index) => {
         const IconComponent = item.icon;
         const TrendIcon = item.trend === "up" ? TrendingUp : TrendingDown;
@@ -77,44 +79,35 @@ export default function ModernKpiCards() {
               e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+              <div style={{ 
+                backgroundColor: item.bgColor, 
+                padding: '12px', 
+                borderRadius: '12px',
+                boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minWidth: '48px',
+                minHeight: '48px'
+              }}>
+                <IconComponent size={28} color={item.color} />
+              </div>
               <div style={{ flex: 1 }}>
                 <p style={{ 
-                  fontSize: '14px', 
+                  fontSize: '15px', 
                   fontWeight: '500', 
                   color: '#6b7280', 
                   marginBottom: '8px' 
                 }}>
                   {item.title}
                 </p>
-                <p style={{ 
-                  fontSize: '32px', 
-                  fontWeight: 'bold', 
-                  color: '#111827', 
-                  marginBottom: '8px',
-                  lineHeight: '1'
-                }}>
-                  {item.value}
-                </p>
-                <div style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  gap: '4px', 
-                  fontSize: '14px',
-                  color: item.textColor
-                }}>
-                  <TrendIcon size={16} />
-                  <span style={{ fontWeight: '500' }}>{item.change}</span>
-                  <span style={{ color: '#6b7280' }}>{item.subtitle}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <span style={{ fontSize: '36px', fontWeight: 'bold', color: item.textColor, lineHeight: '1' }}>{item.value}</span>
+                  <TrendIcon size={18} color={item.textColor} />
+                  <span style={{ fontWeight: '500', fontSize: '15px', color: item.textColor }}>{item.change}</span>
                 </div>
-              </div>
-              <div style={{ 
-                backgroundColor: item.color, 
-                padding: '12px', 
-                borderRadius: '12px',
-                boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)'
-              }}>
-                <IconComponent size={20} color="white" />
+                <span style={{ fontSize: '13px', color: '#6b7280', marginTop: '2px', display: 'block' }}>{item.subtitle}</span>
               </div>
             </div>
           </div>

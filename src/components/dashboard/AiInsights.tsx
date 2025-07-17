@@ -10,14 +10,16 @@ const SuggestionIcon = () => <Lightbulb size={20} />;
 
 export default function AiInsights({ insights }: AiInsightsProps) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}
+         className="sm:gap-3">
       {/* Reminders Card */}
       <div style={{
         backgroundColor: 'white',
         borderRadius: '12px',
         boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
         transition: 'all 0.2s ease-in-out',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        padding: '10px'
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
@@ -26,29 +28,35 @@ export default function AiInsights({ insights }: AiInsightsProps) {
         e.currentTarget.style.boxShadow = '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)';
       }}
       >
-        <div style={{ padding: '24px 24px 16px' }}>
+        <div style={{ padding: '0' }} className="sm:p-4">
           <h3 style={{ 
-            fontSize: '18px', 
+            fontSize: '14px', 
             fontWeight: '600', 
             color: '#111827', 
-            marginBottom: '16px' 
-          }}>
+            marginBottom: '8px' 
+          }}
+          className="sm:text-base sm:mb-3"
+          >
             Lembretes
           </h3>
-        </div>
-        <div style={{ padding: '0 24px 24px' }}>
           <div style={{ 
             background: 'linear-gradient(135deg, #eff6ff, #dbeafe)', 
             borderRadius: '12px', 
-            padding: '16px' 
-          }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+            padding: '14px' 
+          }}
+          className="sm:p-4"
+          >
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}
+                 className="sm:gap-3">
               <div style={{ 
                 backgroundColor: '#3b82f6', 
-                padding: '10px', 
-                borderRadius: '12px',
-                boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)'
-              }}>
+                padding: '8px', 
+                borderRadius: '10px',
+                boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
+                flexShrink: 0
+              }}
+              className="sm:p-3"
+              >
                 <Clock size={20} color="white" />
               </div>
               <div style={{ flex: 1 }}>

@@ -1,49 +1,80 @@
 "use client";
 
-import { Bell, Plus } from "lucide-react";
+import { Bell, Plus, Menu } from "lucide-react";
 
-export default function ModernHeader() {
+interface ModernHeaderProps {
+  onMenuClick: () => void;
+}
+
+export default function ModernHeader({ onMenuClick }: ModernHeaderProps) {
   return (
     <div style={{ 
       backgroundColor: 'white', 
       borderBottom: '1px solid #f3f4f6', 
-      padding: '20px 24px' 
+      padding: '16px 20px' 
     }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <div style={{ flex: 1 }}>
-          <h1 style={{ 
-            fontSize: '32px', 
-            fontWeight: 'bold', 
-            color: '#111827', 
-            marginBottom: '4px' 
-          }}>
-            Dashboard
-          </h1>
-          <p style={{ 
-            color: '#6b7280', 
-            fontSize: '14px' 
-          }}>
-            Planeje, priorize e acompanhe suas tarefas com facilidade.
-          </p>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flex: 1 }}>
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={onMenuClick}
+            style={{ 
+              padding: '8px', 
+              borderRadius: '6px', 
+              backgroundColor: '#f3f4f6',
+              border: 'none',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+            className="lg:hidden"
+          >
+            <Menu size={20} color="#6b7280" />
+          </button>
+          
+          <div style={{ flex: 1 }}>
+            <h1 style={{ 
+              fontSize: '24px', 
+              fontWeight: 'bold', 
+              color: '#111827', 
+              marginBottom: '4px' 
+            }}
+            className="sm:text-3xl"
+            >
+              Dashboard
+            </h1>
+            <p style={{ 
+              color: '#6b7280', 
+              fontSize: '14px',
+              display: 'none'
+            }}
+            className="sm:block"
+            >
+              Planeje, priorize e acompanhe suas tarefas com facilidade.
+            </p>
+          </div>
         </div>
         
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+             className="sm:gap-3">
           <button 
             style={{ 
               backgroundColor: '#10b981', 
               color: 'white', 
-              padding: '10px 16px', 
+              padding: '8px 12px', 
               borderRadius: '8px', 
               display: 'flex', 
               alignItems: 'center', 
-              gap: '8px',
+              gap: '6px',
               border: 'none',
               cursor: 'pointer',
-              fontSize: '14px',
+              fontSize: '13px',
               fontWeight: '500',
               boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
               transition: 'all 0.2s'
             }}
+            className="sm:px-4 sm:py-2 sm:text-sm"
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor = '#059669';
               e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';

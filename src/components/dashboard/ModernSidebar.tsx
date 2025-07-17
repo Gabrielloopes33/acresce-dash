@@ -8,10 +8,16 @@ import {
   Settings, 
   HelpCircle, 
   LogOut,
-  Grid3X3
+  Grid3X3,
+  X
 } from "lucide-react";
 
-export default function ModernSidebar() {
+interface ModernSidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export default function ModernSidebar({ isOpen, onClose }: ModernSidebarProps) {
   const menuItems = [
     { icon: Grid3X3, label: "Dashboard", active: true },
     { icon: Zap, label: "Tarefas", badge: "24" },
@@ -27,7 +33,39 @@ export default function ModernSidebar() {
   ];
 
   return (
-    <div style={{ width: '256px', height: '100vh', backgroundColor: '#f8fafc', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ 
+      width: '256px', 
+      height: '100vh', 
+      backgroundColor: '#f8fafc', 
+      display: 'flex', 
+      flexDirection: 'column',
+      position: 'fixed',
+      left: isOpen ? '0' : '-256px',
+      top: '0',
+      zIndex: 50,
+      transition: 'left 0.3s ease-in-out'
+    }}
+    className="lg:relative lg:left-0 lg:translate-x-0"
+    >
+      {/* Mobile Close Button */}
+      <div className="lg:hidden" style={{ padding: '16px', backgroundColor: 'white', display: 'flex', justifyContent: 'flex-end' }}>
+        <button 
+          onClick={onClose}
+          style={{ 
+            padding: '8px', 
+            borderRadius: '6px', 
+            backgroundColor: '#f3f4f6',
+            border: 'none',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          <X size={20} color="#6b7280" />
+        </button>
+      </div>
+
       {/* Logo */}
       <div style={{ padding: '24px', backgroundColor: 'white' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>

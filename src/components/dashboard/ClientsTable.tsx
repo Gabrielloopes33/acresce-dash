@@ -22,21 +22,26 @@ export default function ClientsTable({ clients }: ClientsTableProps) {
       e.currentTarget.style.boxShadow = '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)';
     }}
     >
-      <div style={{ padding: '24px 24px 16px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div style={{ padding: '8px' }} className="sm:p-4">
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px', gap: '8px' }}>
           <div>
             <h3 style={{ 
-              fontSize: '18px', 
+              fontSize: '14px', 
               fontWeight: '600', 
               color: '#111827', 
-              marginBottom: '4px' 
-            }}>
+              marginBottom: '2px' 
+            }}
+            className="sm:text-base"
+            >
               Colaboração da Equipe
             </h3>
             <p style={{ 
-              fontSize: '14px', 
-              color: '#6b7280' 
-            }}>
+              fontSize: '12px', 
+              color: '#6b7280',
+              display: 'none'
+            }}
+            className="sm:block"
+            >
               Progresso dos projetos e membros da equipe
             </p>
           </div>
@@ -62,36 +67,45 @@ export default function ClientsTable({ clients }: ClientsTableProps) {
           </button>
         </div>
       </div>
-      <div style={{ padding: '0 24px 24px' }}>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <div style={{ padding: '0 4px 8px' }} className="sm:p-4 sm:pt-0">
+        <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', maxWidth: '100vw' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '480px' }}>
             <thead>
               <tr style={{ borderBottom: '1px solid #f3f4f6' }}>
                 <th style={{ 
                   textAlign: 'left', 
-                  padding: '12px 0', 
-                  fontSize: '14px', 
+                  padding: '12px 8px', 
+                  fontSize: '12px', 
                   fontWeight: '500', 
-                  color: '#6b7280' 
-                }}>
+                  color: '#6b7280',
+                  minWidth: '140px'
+                }}
+                className="sm:text-sm sm:px-0"
+                >
                   Membro
                 </th>
                 <th style={{ 
                   textAlign: 'left', 
-                  padding: '12px 0', 
-                  fontSize: '14px', 
+                  padding: '12px 8px', 
+                  fontSize: '12px', 
                   fontWeight: '500', 
-                  color: '#6b7280' 
-                }}>
+                  color: '#6b7280',
+                  minWidth: '120px'
+                }}
+                className="sm:text-sm sm:px-0"
+                >
                   Projeto
                 </th>
                 <th style={{ 
                   textAlign: 'left', 
-                  padding: '12px 0', 
-                  fontSize: '14px', 
+                  padding: '12px 8px', 
+                  fontSize: '12px', 
                   fontWeight: '500', 
-                  color: '#6b7280' 
-                }}>
+                  color: '#6b7280',
+                  minWidth: '120px'
+                }}
+                className="sm:text-sm sm:px-0"
+                >
                   Consumo (kWh)
                 </th>
                 <th style={{ 

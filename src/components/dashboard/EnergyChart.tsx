@@ -31,21 +31,26 @@ const EnergyChart = ({ data }: EnergyChartProps) => {
       e.currentTarget.style.boxShadow = '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)';
     }}
     >
-      <div style={{ padding: '24px 24px 16px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div style={{ padding: '10px' }} className="sm:p-4">
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px', gap: '8px' }}>
           <div>
             <h3 style={{ 
-              fontSize: '18px', 
+              fontSize: '15px', 
               fontWeight: '600', 
               color: '#111827', 
-              marginBottom: '4px' 
-            }}>
+              marginBottom: '2px' 
+            }}
+            className="sm:text-base"
+            >
               Análise de Projetos
             </h3>
             <p style={{ 
-              fontSize: '14px', 
-              color: '#6b7280' 
-            }}>
+              fontSize: '12px', 
+              color: '#6b7280',
+              display: 'none'
+            }}
+            className="sm:block"
+            >
               Acompanhe o desempenho mensal dos seus projetos
             </p>
           </div>
@@ -71,24 +76,26 @@ const EnergyChart = ({ data }: EnergyChartProps) => {
           </div>
         </div>
       </div>
-      <div style={{ paddingLeft: '8px', paddingRight: '24px', paddingBottom: '24px' }}>
-        <div style={{ height: '320px', width: '100%' }}>
+      <div style={{ paddingLeft: '4px', paddingRight: '8px', paddingBottom: '12px' }}>
+        <div style={{ height: '180px', width: '100%' }} className="sm:h-60 md:h-80">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart 
               data={data}
-              margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+              margin={{ top: 20, right: 20, left: 10, bottom: 20 }}
             >
               <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
               <XAxis 
                 dataKey="month" 
                 axisLine={false}
                 tickLine={false}
-                tick={{ fontSize: 12, fill: '#64748b' }}
+                tick={{ fontSize: 10, fill: '#64748b' }}
+                className="sm:text-xs"
               />
               <YAxis 
                 axisLine={false}
                 tickLine={false}
-                tick={{ fontSize: 12, fill: '#64748b' }}
+                tick={{ fontSize: 10, fill: '#64748b' }}
+                className="sm:text-xs"
               />
               <Tooltip 
                 contentStyle={{
@@ -96,26 +103,26 @@ const EnergyChart = ({ data }: EnergyChartProps) => {
                   border: '1px solid #e2e8f0',
                   borderRadius: '12px',
                   boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-                  fontSize: '14px'
+                  fontSize: '12px'
                 }}
               />
               <Line 
                 type="monotone" 
                 dataKey="generated" 
                 stroke="#10b981" 
-                strokeWidth={3}
+                strokeWidth={2}
                 name="Energia Gerada (MWh)" 
-                dot={{ fill: '#10b981', strokeWidth: 2, r: 5 }}
-                activeDot={{ r: 7, stroke: '#10b981', strokeWidth: 2, fill: '#10b981' }}
+                dot={{ fill: '#10b981', strokeWidth: 2, r: 4 }}
+                activeDot={{ r: 6, stroke: '#10b981', strokeWidth: 2, fill: '#10b981' }}
               />
               <Line 
                 type="monotone" 
                 dataKey="consumed" 
                 stroke="#3b82f6" 
-                strokeWidth={3}
+                strokeWidth={2}
                 name="Energia Consumida (MWh)" 
-                dot={{ fill: '#3b82f6', strokeWidth: 2, r: 5 }}
-                activeDot={{ r: 7, stroke: '#3b82f6', strokeWidth: 2, fill: '#3b82f6' }}
+                dot={{ fill: '#3b82f6', strokeWidth: 2, r: 4 }}
+                activeDot={{ r: 6, stroke: '#3b82f6', strokeWidth: 2, fill: '#3b82f6' }}
               />
             </LineChart>
           </ResponsiveContainer>
